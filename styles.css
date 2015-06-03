@@ -1,0 +1,34 @@
+/*GLOBAL*/
+
+.hidden{
+  visibility: hidden;
+}
+.main{
+  max-width: 600px;
+}
+
+.media-object{
+  border-radius: 5px;
+}
+.navbar{
+  -webkit-transition:0.5s ease-in-out;
+}
+
+.navbar:hover{
+  color: #c0392b;
+}
+
+.ptext{
+  text-align: left;
+}
+
+#ptexts h3{
+  text-align: left;
+}
+
+/*STEXTS*/
+
+.stext{
+  text-align: left;
+}
+

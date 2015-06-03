@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script src="app.js" type="text/javascript" charset="utf-8" async defer></script>
+  <meta charset="UTF-8">
+  <title>GroupText</title>
+</head>
+<body>
+
+
+  <div class="container main">
+    <nav class="navbar navbar-inverse">
+      <div class="navbar-header">
+        <ul class="nav navbar-nav">
+          <li><a href="#" class="menu-1"><div class="glyphicon glyphicon-align-justify loginNav"></div></a></li>
+          <li><a href="#" class="menu-3">+++</a></li>
+        </ul>
+      </div>
+    </nav>
+
+<div class="login hidden"><input id="email" type="text" value= "azw@verizon.net" class="form-control" placeholder="e-mail">  <input id="password" class="form-control" type="password" value="123" placeholder="password">
+  <input id="get-token" class="btn btn-success" type="button" value="Log In">
+  <br>
+  <label for="token">Token:</label>
+  <input id="token" placeholder="empty">
+  <br>
+  <label for="id">Id:</label>
+  <input id="id" type="text" placeholder="">
+  <input id="get-by-id" type="button" value="Get By Id">
+  <input id="get-index" type="button" value="Get Index">
+  <br>
+  <label for="result">Result:</label>
+  <input id="result" placeholder="empty"></div>
+
+<!-- Create New Text -->
+    <div class="jumbotron text-center createtext hidden">
+
+      <form >
+        <div class="form-group">
+          <p class="help-block">Enter your text history with '/' in between every text. When your done press Post</p>
+
+          <label for="ptextTitle">Title of Conversation</label>
+          <input type="text" class="form-control" id="ptextTitle" placeholder="Summarize this conversation">
+
+          <label for="textHistory">Text history</label>
+          <textarea type="text" class="form-control" id="textHistory" placeholder="Enter Text History"></textarea>
+        </div>
+        <div class="form-group">
+
+          <label for="currentText">Current Text</label>
+          <input type="text" class="form-control" id="currentText" placeholder="What Your Gonna Send">
+        </div>
+        <div class="form-group">
+
+        </div>
+      </form>
+      <a href="#" id="new-post-button" class="btn btn-success">Post</a>
+    </div>
+
+<!-- Intro -->
+
+    <div class="jumbotron text-center info">
+      <h1>GroupText</h1>
+      <p>Let your friends help you write</p>
+      <a href="#" id="go-button" class="btn btn-success">Learn More</a>
+    </div>
+    <div class= "learnmore hidden">
+      <p>post a text and the history behind it. your friends can suggest what to type and then vote on the best answer. the best text <strong>gets sent</strong>.</p>
+    </div>
+
+
+<!-- primary text container -->
+
+    <div class="row text-center">
+      <div class="col-sm-12">
+        <div id="ptexts" class="info-box">
+          <span class="glyphicon glyphicon-fire"></span>
+          <h2>Primary Texts</h2>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
