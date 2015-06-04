@@ -4,6 +4,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script src="primaryText.js"></script>
+  <script src="suggestedText.js"></script>
   <script src="app.js" type="text/javascript" charset="utf-8" async defer></script>
   <meta charset="UTF-8">
   <title>GroupText</title>
@@ -15,8 +17,8 @@
     <nav class="navbar navbar-inverse">
       <div class="navbar-header">
         <ul class="nav navbar-nav">
-          <li><a href="#" class="menu-1"><div class="glyphicon glyphicon-align-justify loginNav"></div></a></li>
-          <li><a href="#" class="menu-3">+++</a></li>
+          <li><a href="#" class="menu-1"><p> Account </p></a></li>
+          <li><a href="#" class="menu-3">Post a Text</a></li>
         </ul>
       </div>
     </nav>
@@ -31,6 +33,7 @@
   <input id="id" type="text" placeholder="">
   <input id="get-by-id" type="button" value="Get By Id">
   <input id="get-index" type="button" value="Get Index">
+  <input id="get-user" type="button" value="Get User">
   <br>
   <label for="result">Result:</label>
   <input id="result" placeholder="empty"></div>
@@ -77,7 +80,17 @@
     <div class="row text-center">
       <div class="col-sm-12">
         <div id="ptexts" class="info-box">
-          <span class="glyphicon glyphicon-fire"></span>
+          <div id = "dudecontainer">
+          <div id="round">
+            <div id="left-eye"></div>
+            <div id="right-eye"></div>
+            <div class="blush" id="blush1"></div>
+            <div id="mouth"></div>
+            <div class="blush" id="blush2"></div>
+
+          </div>
+          <div id="shadow"></div>
+                    </div>
           <h2>Primary Texts</h2>
 
         </div>
