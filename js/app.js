@@ -43,22 +43,29 @@ $('#ptexts').on('click', 'a', function(event){
         method: "POST"
       }).done(function(data) {
         currentToken = data['token'];
+        console.log(data)
+        $('.cd-user-modal').removeClass('is-visible')
+        $('#ptexts').empty();
+        $('#user-name').html('');
+        $('#user-name').append("<a class ='btn btn-warning'>Profile</a> \t Hello " + data['name'] + "!");
+        getPtexts();
       }).fail(function(jqxhr, textStatus, errorThrown){
         console.log(textStatus);
       });
     });
-    // $('#get-index').on('click', function(){
-    //   $.ajax('http://localhost:3000/hello',{
-    //     dataType: "json",
-    //     method: "GET",
-    //     headers: { Authorization: 'Token token=' + currentToken}
-    //   }).done(function(data, textStatus) {
-    //     $('#result').val(JSON.stringify(data));
-    //     console.log(data);
-    //   }).fail(function(jqxhr, textStatus, errorThrown){
-    //     console.log(textStatus);
-    //   });
-    // });
+//create new user
+    $('#get-index').on('click', function(){
+      $.ajax('http://localhost:3000/hello',{
+        dataType: "json",
+        method: "GET",
+        headers: { Authorization: 'Token token=' + currentToken}
+      }).done(function(data, textStatus) {
+        $('#result').val(JSON.stringify(data));
+        console.log(data);
+      }).fail(function(jqxhr, textStatus, errorThrown){
+        console.log(textStatus);
+      });
+    });
     // $('#get-by-id').on('click', function(){
     //   $.ajax('http://localhost:3000/hello/' +
     //     $('#id').val(), {

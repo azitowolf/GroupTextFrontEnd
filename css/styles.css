@@ -3,12 +3,26 @@
 .hidden{
   visibility: hidden;
 }
+
+a{
+  text-decoration: none;
+  color:grey;
+}
+
+a:hover{
+  text-decoration: none;
+  color:grey;
+}
+
 .main{
   max-width: 600px;
 }
 
 .media-object{
-  border-radius: 5px;
+  border-radius: 0px;
+}
+.media{
+  margin-top:35px;
 }
 .navbar{
   -webkit-transition:0.5s ease-in-out;
@@ -25,12 +39,72 @@
 #ptexts h3{
   text-align: left;
 }
+#votes{
+  display: inline;
+}
+i, {
+  font-size: 1.5em;
+  margin:5px;
+}
+
+#user-name{
+  position: fixed;
+  top:10px;
+  left:10px;
+}
+/*ptexts*/
+
+.profile{
+  width:100px;
+  height:100px;
+  background-color: #eee;
+  text-align: left;
+  font-size: 3vw;
+  border-radius: 0px;
+  background: url('../img/profile.png');
+}
+.countdown{
+  width:100%;
+  border:1px solid lightgrey;
+  text-align: center;
+}
+#deletePtext{
+  margin-left:47%;
+}
+
 
 /*STEXTS*/
 
 .stext{
   text-align: left;
+
 }
+#sendStext{
+  display: inline-block;
+  float:right;
+}
+.voteCount, .votesum, .createnews{
+  height:100px;
+  width: 100px;
+  background-color: lightgrey;
+  text-align: left;
+  border-radius: 0ps;
+  background: url('../img/profile.png');
+}
+#votes{
+  font-size: 1.5em;
+}
+#vote{
+  float:right;
+}
+.smsg{
+  float:left;
+  margin-left: 0px
+}
+.votesum{
+  font-size: 3em;
+}
+
 #dudecontainer{
   text-align: center;
   margin:0px auto;

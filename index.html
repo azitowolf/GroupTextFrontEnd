@@ -1,52 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-  <script src="primaryText.js"></script>
-  <script src="suggestedText.js"></script>
-  <script src="app.js" type="text/javascript" charset="utf-8" async defer></script>
+  <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/styles.css"> <!-- Gem style -->
+
+
+  <link rel="stylesheet" href="css/modal.css">
+  <link rel="stylesheet" href="css/textBox.css">
+  <script src="js/modernizr.js"></script> <!-- Modernizr -->
+
   <meta charset="UTF-8">
-  <title>GroupText</title>
+  <title>TextHelp</title>
 </head>
 <body>
+<div id="user-name">Not Logged In</div>
+<div class="container main">
+
+  <header role="banner">
 
 
-  <div class="container main">
-    <nav class="navbar navbar-inverse">
-      <div class="navbar-header">
-        <ul class="nav navbar-nav">
-          <li><a href="#" class="menu-1"><p> Account </p></a></li>
-          <li><a href="#" class="menu-3">Post a Text</a></li>
-        </ul>
-      </div>
+         <div id="cd-logo"><a href="#0" class="menu-3"><i class="glyphicon glyphicon-plus"></i>Add a text</a></div>
+
+    <nav class="main-nav">
+      <ul>
+        <!-- inser more links here -->
+
+        <li><a class="cd-signin" href="#0">Sign in</a></li>
+        <li><a class="cd-signup" href="#0">Sign up</a></li>
+      </ul>
     </nav>
+  </header>
 
-<div class="login hidden"><input id="email" type="text" value= "azw@verizon.net" class="form-control" placeholder="e-mail">  <input id="password" class="form-control" type="password" value="123" placeholder="password">
-  <input id="get-token" class="btn btn-success" type="button" value="Log In">
-  <br>
-  <label for="token">Token:</label>
-  <input id="token" placeholder="empty">
-  <br>
-  <label for="id">Id:</label>
-  <input id="id" type="text" placeholder="">
-  <input id="get-by-id" type="button" value="Get By Id">
-  <input id="get-index" type="button" value="Get Index">
-  <input id="get-user" type="button" value="Get User">
-  <br>
-  <label for="result">Result:</label>
-  <input id="result" placeholder="empty"></div>
+  <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+    <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
+      <ul class="cd-switcher">
+        <li><a href="#0">Sign in</a></li>
+        <li><a href="#0">New account</a></li>
+      </ul>
+
+      <div id="cd-login"> <!-- log in form -->
+        <form class="cd-form">
+          <p class="fieldset">
+            <label class="image-replace cd-email" for="signin-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace cd-password" for="signin-password">Password</label>
+            <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+            <a href="#0" class="hide-password">Hide</a>
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="remember-me" checked>
+            <label for="remember-me">Remember me</label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width" type="submit" value="Login" id="loginBtn">
+          </p>
+        </form>
+
+        <p class="cd-form-bottom-message"><a href="#0">Forgot your password?</a></p>
+        <!-- <a href="#0" class="cd-close-form">Close</a> -->
+      </div> <!-- cd-login -->
+
+      <div id="cd-signup"> <!-- sign up form -->
+        <form class="cd-form">
+          <p class="fieldset">
+            <label class="image-replace cd-username" for="signup-username">Username</label>
+            <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace cd-email" for="signup-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+          <p class="fieldset">
+            <label class="image-replace cd-password" for="signup-password">Password</label>
+            <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+            <a href="#0" class="hide-password">Hide</a>
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+          <p class="fieldset">
+            <input type="checkbox" id="accept-terms">
+            <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="Create account">
+          </p>
+        </form>
+
+        <!-- <a href="#0" class="cd-close-form">Close</a> -->
+      </div> <!-- cd-signup -->
+
+      <div id="cd-reset-password"> <!-- reset password form -->
+        <p class="cd-form-message">Lost your password? Please enter your email address. You will receive a link to create a new password.</p>
+
+        <form class="cd-form">
+          <p class="fieldset">
+            <label class="image-replace cd-email" for="reset-email">E-mail</label>
+            <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+            <span class="cd-error-message">Error message here!</span>
+          </p>
+
+          <p class="fieldset">
+            <input class="full-width has-padding" type="submit" value="Reset password">
+          </p>
+        </form>
+
+        <p class="cd-form-bottom-message"><a href="#0">Back to log-in</a></p>
+      </div> <!-- cd-reset-password -->
+      <a href="#0" class="cd-close-form">Close</a>
+    </div> <!-- cd-user-modal-container -->
+  </div> <!-- cd-user-modal -->
+
+
+
+
+  <div class="login hidden"><input id="email" type="text" value= "azw@verizon.net" class="form-control" placeholder="e-mail">  <input id="password" class="form-control" type="password" value="123" placeholder="password">
+    <input id="get-token" class="btn btn-success" type="button" value="Log In">
+  </div>
 
 <!-- Create New Text -->
     <div class="jumbotron text-center createtext hidden">
 
       <form >
         <div class="form-group">
-          <p class="help-block">Enter your text history with '/' in between every text. When your done press Post</p>
-
-          <label for="ptextTitle">Title of Conversation</label>
-          <input type="text" class="form-control" id="ptextTitle" placeholder="Summarize this conversation">
+          <p class="help-block">Enter your text history in the format #1: Hi #2 how are you #3: I'm great etc...</p>
 
           <label for="textHistory">Text history</label>
           <textarea type="text" class="form-control" id="textHistory" placeholder="Enter Text History"></textarea>
@@ -55,8 +145,12 @@
 
           <label for="currentText">Current Text</label>
           <input type="text" class="form-control" id="currentText" placeholder="What Your Gonna Send">
+
+          <label for="recipientNumber">Recipient Number</label>
+          <input type="text" class="form-control" id="recipientNumber" placeholder="ex 6171234567">
         </div>
         <div class="form-group">
+
 
         </div>
       </form>
@@ -66,8 +160,8 @@
 <!-- Intro -->
 
     <div class="jumbotron text-center info">
-      <h1>GroupText</h1>
-      <p>Let your friends help you write</p>
+      <h1>TextHelp</h1>
+      <p>Help your friends write their texts</p>
       <a href="#" id="go-button" class="btn btn-success">Learn More</a>
     </div>
     <div class= "learnmore hidden">
@@ -80,23 +174,22 @@
     <div class="row text-center">
       <div class="col-sm-12">
         <div id="ptexts" class="info-box">
-          <div id = "dudecontainer">
-          <div id="round">
-            <div id="left-eye"></div>
-            <div id="right-eye"></div>
-            <div class="blush" id="blush1"></div>
-            <div id="mouth"></div>
-            <div class="blush" id="blush2"></div>
 
-          </div>
-          <div id="shadow"></div>
-                    </div>
-          <h2>Primary Texts</h2>
 
         </div>
       </div>
     </div>
 
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+  <script src="js/textBox.js"></script>
+  <script src="js/modal.js"></script>
+
+
+  <script src="js/suggestedText.js"></script>
+  <script src="js/primaryText.js"></script>
+
+  <script src="js/app.js" type="text/javascript" charset="utf-8" async defer></script>
+
 </body>
 </html>
