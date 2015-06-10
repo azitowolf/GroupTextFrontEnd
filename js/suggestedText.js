@@ -1,3 +1,8 @@
+//SUGGESTEDTEXT.js
+// User should be able to see all stexts
+// User should be able to delete stext
+// User should be able to add stext
+
 //render Stext HTML
   var makeStext = function(id, user, text, votes){
     var html = "<div class='media stext' id='"+ id +"'><div class='media-left'><a class='expand' href='#'><div class='media-object voteCount'> </div></a></div><div class='media-body'><h4 class='media-heading'>" + user + "</h4> <div class='message left'><div class='message-text smsg'>" + text + "</div></div></p><div>Votes: <div id='votes'> " + votes + "<a href='#' id='sendStext' data-text='" + text + "''  class= 'sendStext btn btn-warning'> Send </a><a href='#' id='vote' class='btn btn-success'>Vote</a> </div></div></div></div>";
@@ -22,25 +27,6 @@
       console.log("error");
     });
 }
-// //get votes for specific stext
-// function getVotes(pId, sId){
-// var voteLocation = $('#' + sId + " .voteCount");
-//   $.ajax({
-//     url: 'http://localhost:3000/ptexts/' + pId+ '/stexts/' + sId + '/votes',
-//     type: 'GET',
-//     dataType: 'json',
-//   })
-//   .done(function(data) {
-//     console.log(data);
-//     voteLocation.html('');
-//     voteLocation.append(data);
-
-//   })
-//   .fail(function() {
-//     console.log("error");
-//   });
-
-// }
 
 $(document).ready(function(){
 //create new Stext and render it in the DOM

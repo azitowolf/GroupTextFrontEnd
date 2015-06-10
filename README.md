@@ -3,12 +3,12 @@
 #TextHelp - Help your friends write their texts
 ##Texthelp allows you to post a text history and have your friends help you formulate the response. When you get to the response you want, you can send the text directly to the desired recipient.
 
-#Front End https://github.com/azitowolf/GroupTextFrontEnd
+###Front End https://github.com/azitowolf/GroupTextFrontEnd
 #Files
 ##JS - modal, textBox, modernizr, primary, suggested, app.js
 ##CSS - modal, textbox, reset, styles.css
 
-#Back End https://github.com/azitowolf/GroupTextBackEnd
+###Back End https://github.com/azitowolf/GroupTextBackEnd
 #Components
 ##Rails API
 ##postgreSQL

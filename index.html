@@ -15,10 +15,25 @@
   <title>TextHelp</title>
 </head>
 <body>
-<div id="user-name">Not Logged In</div>
-<div class="container main">
 
-  <header role="banner">
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="user-name" data-toggle="dropdown" aria-expanded="false">
+
+    not logged in
+  </button>
+  <ul class="dropdown-menu" role="menu" aria-labelledby="user-name">
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
+  </ul>
+</div>
+
+
+
+  <div class="container main">
+
+  <header class= "header" role="banner">
 
 
          <div id="cd-logo"><a href="#0" class="menu-3"><i class="glyphicon glyphicon-plus"></i>Add a text</a></div>
@@ -165,7 +180,7 @@
       <a href="#" id="go-button" class="btn btn-success">Learn More</a>
     </div>
     <div class= "learnmore hidden">
-      <p>post a text and the history behind it. your friends can suggest what to type and then vote on the best answer. the best text <strong>gets sent</strong>.</p>
+      <p>post a text and the history behind it. your friends can suggest what to text back and then vote on the best answer. you can choose what text<strong>gets sent</strong>. made by <a href="https://github.com/azitowolf/">@azitowolf in Boston.</a></p>
     </div>
 
 
