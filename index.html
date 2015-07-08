@@ -21,26 +21,21 @@
     not logged in
   </button>
   <ul class="dropdown-menu" role="menu" aria-labelledby="user-name">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
+    <li id="viewAccount" role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Texts</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sent Texts</a></li>
     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign Out</a></li>
   </ul>
 </div>
 
-
-
   <div class="container main">
 
   <header class= "header" role="banner">
-
 
          <div id="cd-logo"><a href="#0" class="menu-3"><i class="glyphicon glyphicon-plus"></i>Add a text</a></div>
 
     <nav class="main-nav">
       <ul>
-        <!-- inser more links here -->
-
         <li><a class="cd-signin" href="#0">Sign in</a></li>
         <li><a class="cd-signup" href="#0">Sign up</a></li>
       </ul>
@@ -59,14 +54,14 @@
           <p class="fieldset">
             <label class="image-replace cd-email" for="signin-email">E-mail</label>
             <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-            <span class="cd-error-message">Error message here!</span>
+            <span class="cd-error-message">We could not find your account! Sorry!</span>
           </p>
 
           <p class="fieldset">
             <label class="image-replace cd-password" for="signin-password">Password</label>
             <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
             <a href="#0" class="hide-password">Hide</a>
-            <span class="cd-error-message">Error message here!</span>
+            <span class="cd-error-message">We could not find your account! Sorry!</span>
           </p>
 
           <p class="fieldset">
@@ -179,7 +174,7 @@
       <a href="#" id="go-button" class="btn btn-success">Learn More</a>
     </div>
     <div class= "learnmore hidden">
-      <p>post a text and the history behind it. your friends can suggest what to text back and then vote on the best answer. you can choose what text<strong>gets sent</strong>. made by <a href="https://github.com/azitowolf/">@azitowolf in Boston.</a></p>
+      <p>post a text and the history behind it. your friends can suggest what to text back and then vote on the best answer. you can choose what text <strong>gets sent</strong>. made by <a href="https://github.com/azitowolf/">@azitowolf</a> in Boston.</p>
     </div>
 
 
@@ -202,7 +197,7 @@
 
   <script src="js/suggestedText.js"></script>
   <script src="js/primaryText.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="js/app.js" type="text/javascript" charset="utf-8" async defer></script>
 
 </body>

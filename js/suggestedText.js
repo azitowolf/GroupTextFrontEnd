@@ -1,7 +1,6 @@
 //SUGGESTEDTEXT.js
-// User should be able to see all stexts
-// User should be able to delete stext
-// User should be able to add stext
+// All functions should be in the protected controller
+// View, add and delete Suggested texts
 
 //render Stext HTML
 var makeStext = function(id, user, text, votes) {
@@ -9,8 +8,9 @@ var makeStext = function(id, user, text, votes) {
     "'><div class='media-left'><a class='expand' href='#'><div class='media-object voteCount'> </div></a></div><div class='media-body'><h4 class='media-heading'>" +
     user + "</h4> <div class='message left'><div class='message-text smsg'>" + text +
     "</div></div></p><div>Votes: <div id='votes'> " + votes +
-    "<a href='#' id='sendStext' data-text='" + text +
-    "''  class= 'sendStext btn btn-warning'> Send </a><a href='#' id='vote' class='btn btn-success'>Vote</a> </div></div></div></div>";
+    "<a href='#' id='vote' class='btn btn-success'>Vote</a> <a href='#' id='deleteStext' class='btn btn-danger'>Delete</a> <a href='#' id='sendStext' data-text='" +
+    text +
+    "''  class= 'sendStext btn btn-warning'> Send </a></div></div></div></div>";
   return html;
 };
 
@@ -25,6 +25,7 @@ function getStexts(id, location, owned) {
       location.append(makeStext(val.id, val.user.name, val.text, val.virtual));
       if (!owned) {
         $('#ptext' + id + ' .sendStext').addClass('hidden');
+        $('#ptext' + id + ' .deleteStext').addClass('hidden');
       }
 
     });

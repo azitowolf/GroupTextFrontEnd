@@ -29,10 +29,6 @@ $(document).ready(function($) {
     event.preventDefault();
   });
 
-  $('.dropdown-toggle').on('click', function(event) {
-    $('.dropdown-menu').toggle();
-  })
-
   //code for creating user token on login
 
   $('#loginBtn').on('click', function() {
@@ -59,6 +55,17 @@ $(document).ready(function($) {
       console.log(textStatus);
     });
   });
-
+  //   $('#get-index').on('click', function(){
+  //   $.ajax('http://localhost:3000/hello',{
+  //     dataType: "json",
+  //     method: "GET",
+  //     headers: { Authorization: 'Token token=' + currentToken}
+  //   }).done(function(data, textStatus) {
+  //     $('#result').val(JSON.stringify(data));
+  //     console.log(data);
+  //   }).fail(function(jqxhr, textStatus, errorThrown){
+  //     console.log(textStatus);
+  //   });
+  // });
   // end document ready
 });

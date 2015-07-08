@@ -1,4 +1,4 @@
-/* -------------------------------- 
+/* --------------------------------
 
 Primary style
 
@@ -14,12 +14,7 @@ html * {
   box-sizing: border-box;
 }
 
-body {
-  font-size: 100%;
-  font-family: "PT Sans", sans-serif;
-  color: #505260;
-  background-color: white;
-}
+
 
 a {
   color: #2f889a;
@@ -39,9 +34,9 @@ input::-ms-clear, textarea::-ms-clear {
   display: none;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 header[role=banner] {
@@ -170,9 +165,9 @@ header[role=banner]::after {
   }
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-xsigin/signup popup 
+xsigin/signup popup
 
 -------------------------------- */
 .cd-user-modal {

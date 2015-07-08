@@ -1,7 +1,6 @@
 //PRIMARYTEXT.js
-// User should be able to see all ptexts
-// User should be able to delete ptext
-// User should be able to add ptext
+// All texts should be in the protected controller
+//
 
 
 //render ptext HTML
