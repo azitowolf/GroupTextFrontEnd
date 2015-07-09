@@ -55,17 +55,27 @@ $(document).ready(function($) {
       console.log(textStatus);
     });
   });
-  //   $('#get-index').on('click', function(){
-  //   $.ajax('http://localhost:3000/hello',{
-  //     dataType: "json",
-  //     method: "GET",
-  //     headers: { Authorization: 'Token token=' + currentToken}
-  //   }).done(function(data, textStatus) {
-  //     $('#result').val(JSON.stringify(data));
-  //     console.log(data);
-  //   }).fail(function(jqxhr, textStatus, errorThrown){
-  //     console.log(textStatus);
-  //   });
-  // });
+  $('#register').on('click', function() {
+    $.ajax('https://murmuring-wave-7389.herokuapp.com/register', {
+      contentType: "application/json",
+      method: "POST",
+      data: JSON.stringify({
+        credentials: {
+          name: $('#signup-username').val(),
+          image: 'http://strawberry.com',
+          email: $('#signup-email').val(),
+          password: $('#signup-password').val()
+        }
+      }),
+    }).done(function(data, textStatus) {
+      console.log(data);
+      $('.cd-user-modal').removeClass('is-visible')
+      $('#ptexts').empty();
+      $('#user-name').html('');
+      $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + data['name']);
+    }).fail(function(jqxhr, textStatus, errorThrown) {
+      console.log(textStatus);
+    });
+  });
   // end document ready
 });
