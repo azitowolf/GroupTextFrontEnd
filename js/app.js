@@ -1,6 +1,8 @@
 var currentToken;
+var path = 'http://localhost:3000'
 
 function init(){
+  session();
   //populate all Primary texts and their Suggested texts
   getPtexts();
   //AJAX for creating user token on login

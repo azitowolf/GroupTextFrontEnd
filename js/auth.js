@@ -14,6 +14,7 @@ var login = function(){
     }).done(function(data) {
       currentToken = data['token'];
       window.localStorage.setItem("TOKEN", data['token']);
+      window.localStorage.setItem("USER", data['name']);
       console.log(data);
       $('.cd-user-modal').removeClass('is-visible');
       $('#ptexts').empty();
@@ -46,4 +47,12 @@ var login = function(){
     }).fail(function(jqxhr, textStatus, errorThrown) {
       console.log(textStatus);
     });
+  }
+
+  var session = function() {
+    var sessionName = window.localStorage.getItem("USER");
+    var sessionToken = window.localStorage.getItem("TOKEN");
+    $('#ptexts').empty();
+    $('#user-name').html('');
+    $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + sessionName);
   }
