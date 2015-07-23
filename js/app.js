@@ -1,7 +1,3 @@
-// APP.JS
-// User Login
-// User click functionality
-
 var currentToken;
 
 $(document).ready(function($) {
@@ -10,13 +6,13 @@ $(document).ready(function($) {
   getPtexts();
 
   // hide and show learn more
-  $('#go-button').click(function(event) {
+  $('#learnmore-btn').click(function(event) {
     event.preventDefault();
     $('.learnmore').toggleClass('hidden');
   });
 
   //hide and show the Primary text posting form
-  $('.menu-3').click(function() {
+  $('.createPtext').click(function() {
     $('.createtext').toggleClass('hidden');
   });
 
@@ -29,32 +25,9 @@ $(document).ready(function($) {
     event.preventDefault();
   });
 
-  //code for creating user token on login
-
-  $('#loginBtn').on('click', function() {
-    $.ajax('https://murmuring-wave-7389.herokuapp.com/login', {
-      contentType: 'application/json',
-      processData: false,
-      data: JSON.stringify({
-        credentials: {
-          email: $('#signin-email').val(),
-          password: $('#signin-password').val()
-        }
-      }),
-      dataType: "json",
-      method: "POST"
-    }).done(function(data) {
-      currentToken = data['token'];
-      console.log(data)
-      $('.cd-user-modal').removeClass('is-visible')
-      $('#ptexts').empty();
-      $('#user-name').html('');
-      $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + data['name']);
-      getPtexts();
-    }).fail(function(jqxhr, textStatus, errorThrown) {
-      console.log(textStatus);
-    });
-  });
+  //AJAX for creating user token on login
+  $('#loginBtn').on('click', login);
+  //AJAX for registering a new user
   $('#register').on('click', function() {
     $.ajax('https://murmuring-wave-7389.herokuapp.com/register', {
       contentType: "application/json",
@@ -69,7 +42,7 @@ $(document).ready(function($) {
       }),
     }).done(function(data, textStatus) {
       console.log(data);
-      $('.cd-user-modal').removeClass('is-visible')
+      $('.cd-user-modal').removeClass('is-visible');
       $('#ptexts').empty();
       $('#user-name').html('');
       $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + data['name']);
@@ -77,5 +50,4 @@ $(document).ready(function($) {
       console.log(textStatus);
     });
   });
-  // end document ready
-});
+}); // end document ready
