@@ -36,7 +36,7 @@ a:hover{
   -webkit-transition:0.5s ease-in-out;
 }
 #user-name{
-  position: fixed;
+
   top:10px;
   left:10px;
 }
@@ -111,4 +111,8 @@ i {
 }
 .votesum{
   font-size: 3em;
+}
+
+#userProfileImage{
+  display:inline-block;
 }

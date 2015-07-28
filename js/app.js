@@ -35,16 +35,13 @@ function init() {
   });
 
   function readURL(input) {
-    // var pjs = Processing.getInstanceById('signup-avatar');
     if (input.files && input.files[0]) {
       var reader = new FileReader();
 
       reader.onloadend = function(e) {
         console.log(e.target.result);
         $('#image-preview').attr('src', e.target.result);
-
       }
-
       reader.readAsDataURL(input.files[0]);
     }
   }

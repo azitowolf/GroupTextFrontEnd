@@ -40,7 +40,7 @@ var authIIFE = (function() {
       data: JSON.stringify({
         credentials: {
           name: $('#signup-username').val(),
-          image: 'http://strawberry.com',
+          image: $('#image-preview').attr('src'),
           email: $('#signup-email').val(),
           password: $('#signup-password').val(),
           avatar: $('#image-preview').attr('src')
@@ -50,15 +50,17 @@ var authIIFE = (function() {
       currentToken = data['token'];
       window.localStorage.setItem("TOKEN", data['token']);
       window.localStorage.setItem("USER", data['name']);
+      window.localStorage.setItem("PROFILE", data['image']);
       console.log(data);
       $('.cd-user-modal').removeClass('is-visible');
       $('#ptexts').empty();
       $('#user-name').html('');
       $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + data['name']);
+      $('#userProfileImage').attr('src', data['image']);
     }).fail(function(jqxhr, textStatus, errorThrown) {
       console.log(textStatus);
     });
-  }
+  };
 
   var session = function() {
     var sessionName = window.localStorage.getItem("USER");
@@ -66,6 +68,7 @@ var authIIFE = (function() {
     $('#ptexts').empty();
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + sessionName);
+    $('#userProfileImage').attr('src', window.localStorage.getItem("PROFILE"));
   }
 
   return {
