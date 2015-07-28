@@ -64,6 +64,7 @@ var authIIFE = (function() {
   };
 
   var session = function() {
+    currentToken = window.localStorage.getItem("TOKEN");
     var sessionName = window.localStorage.getItem("USER");
     var sessionToken = window.localStorage.getItem("TOKEN");
     var sessionAvatar = window.localStorage.getItem("AVATAR");

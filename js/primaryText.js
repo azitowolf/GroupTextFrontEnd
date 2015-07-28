@@ -1,11 +1,12 @@
 //PRIMARYTEXT.js
 
 //render ptext HTML
-var makePtext = function(id, image, user, text) {
+var makePtext = function(id, avatar, user, text) {
   var html = "<div data-attr='" + id + "' class='media ptext' id='ptext" + id +
-    "'><div class='media-left'><a class='expand' href='#'><div class='media-object profile'></div></a></div><div class='media-body'><h2 class='media-heading'>" +
+    "'><div class='media-left'><a class='expand' href='#'><img src = '" + avatar +
+    "' class='media-object profile'></a></div><div class='media-body'><h2 class='media-heading'>" +
     user +
-    "<a href='#' id=deletePtext class= 'btn btn-danger'> Delete </a> </h2><p><div class='phone-containter'><div id='phone' class='phone'><div class='message left'><div class='message-text'></div></div><div class='message right'><div class='message-text'>Hi!</div><div class='message-text'>Where are you now?</div></div><div class='message left'><div class='message-text'></div></div></div><div class='send-container'><form id='send'><textarea rows='2' type='text' id='msgInput' class='send-input'>" +
+    "<a href='#' id=deletePtext class= 'btn btn-danger'> Delete </a> </h2><p><div class='phone-containter'><div id='phone' class='phone'><div class='message left'><div class='message-text'></div></div><div class='message right'><div class='message-text'>!</div><div class='message-text'></div></div><div class='message left'><div class='message-text'></div></div></div><div class='send-container'><form id='send'><textarea rows='2' type='text' id='msgInput' class='send-input'>" +
     text +
     "</textarea><input type='submit' class='send-btn' value='Send'></form></div></div></p><div class ='stexts hidden'></div></div></div>";
   return html;
@@ -14,7 +15,7 @@ var makePtext = function(id, image, user, text) {
 //AJAX request for all ptexts
 function getPtexts() {
   $.ajax({
-    url: 'https://murmuring-wave-7389.herokuapp.com/ptexts',
+    url: path + '/ptexts',
     type: 'GET',
     headers: {
       Authorization: 'Token token=' + currentToken
@@ -25,7 +26,7 @@ function getPtexts() {
       contents.ptexts.forEach(function(val) {
 
         //make the ptexts
-        $('#ptexts').append(makePtext(val.id, val.image, val.user.name, val.text));
+        $('#ptexts').append(makePtext(val.id, val.user.avatar, val.user.name, val.text));
         parseText(val.history, val.id);
 
         function isOwnedByUser() {
@@ -80,7 +81,7 @@ $(document).ready(function() {
   $('#new-post-button').click(function(event) {
     event.preventDefault();
     $.ajax({
-      url: 'https://murmuring-wave-7389.herokuapp.com/ptexts',
+      url: path + '/ptexts',
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken
@@ -89,14 +90,15 @@ $(document).ready(function() {
       data: {
         ptext: {
           history: $('#textHistory').val(),
-          text: $('#currentText').val()
+          text: $('#currentText').val(),
+          avatar: window.localStorage.getItem("AVATAR")
         }
       }
     })
       .done(function(contents) {
         console.log(contents);
-        var newP = makePtext(contents.ptext.id, contents.ptext.image, contents.ptext.user.name,
-          contents.ptext.text, contents.ptext.image);
+        var newP = makePtext(contents.ptext.id, window.localStorage.getItem("AVATAR"), contents.ptext.user.name,
+          contents.ptext.text);
         $('#ptexts').append(newP);
         parseText(contents.ptext.history, contents.ptext.id);
         $('.createtext').toggleClass('hidden');
@@ -104,7 +106,7 @@ $(document).ready(function() {
       })
       .fail(function(XMLHttpRequest) {
         if (XMLHttpRequest.status === 401) {
-          $('.cd-user-modal').addClass('is-visible')
+          $('.cd-user-modal').addClass('is-visible');
         }
       });
   });

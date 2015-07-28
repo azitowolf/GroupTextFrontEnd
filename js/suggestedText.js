@@ -3,9 +3,10 @@
 // View, add and delete Suggested texts
 
 //render Stext HTML
-var makeStext = function(id, user, text, votes) {
+var makeStext = function(id, user, avatar, text, votes) {
   var html = "<div class='media stext' id='" + id +
-    "'><div class='media-left'><a class='expand' href='#'><div class='media-object voteCount'> </div></a></div><div class='media-body'><h4 class='media-heading'>" +
+    "'><div class='media-left'><a class='expand' href='#'><img src=" + avatar +
+    " class='media-object voteCount'></a></div><div class='media-body'><h4 class='media-heading'>" +
     user + "</h4> <div class='message left'><div class='message-text smsg'>" + text +
     "</div></div></p><div>Votes: <div id='votes'> " + votes +
     "<a href='#' id='vote' class='btn btn-success'>Vote</a> <a href='#' id='deleteStext' class='btn btn-danger'>Delete</a> <a href='#' id='sendStext' data-text='" +
@@ -17,12 +18,12 @@ var makeStext = function(id, user, text, votes) {
 //getStexts -get all stexts for ptext with ID
 function getStexts(id, location, owned) {
   $.ajax({
-    url: 'https://murmuring-wave-7389.herokuapp.com/ptexts/' + id + "/stexts",
+    url: path + '/ptexts/' + id + "/stexts",
     type: 'GET',
     dataType: 'json'
   }).done(function(contents) {
     contents.stexts.forEach(function(val) {
-      location.append(makeStext(val.id, val.user.name, val.text, val.virtual));
+      location.append(makeStext(val.id, val.user.name, val.user.avatar, val.text, val.virtual));
       if (!owned) {
         $('#ptext' + id + ' .sendStext').addClass('hidden');
         $('#ptext' + id + ' .deleteStext').addClass('hidden');
@@ -42,7 +43,7 @@ $(document).ready(function() {
     var targetText = $($t).siblings('#msgInput').val();
     var targetID = $($t).closest('.ptext').attr('data-attr');
     $.ajax({
-      url: 'https://murmuring-wave-7389.herokuapp.com/ptexts/' + targetID + "/stexts",
+      url: path + '/ptexts/' + targetID + "/stexts",
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken
@@ -50,14 +51,15 @@ $(document).ready(function() {
       dataType: 'json',
       data: {
         stext: {
-          text: targetText
+          text: targetText,
+          avatar: window.localStorage.getItem("AVATAR")
         }
       }
     })
       .done(function(item) {
-        var newS = makeStext(item.stext.id, item.stext.user.name, item.stext.text, item.stext
+        var newS = makeStext(item.stext.id, item.stext.user.name, window.localStorage.getItem("AVATAR"), item.stext.text, item.stext
           .virtual);
-        console.log(item)
+        console.log(item);
         $($t).parent().parent().parent().siblings('.stexts').append(newS);
         $($t).parent().parent().parent().siblings('.stexts').removeClass('hidden');
         //   var targetTitle = $($t).siblings("#textTitle").val("");
@@ -66,7 +68,7 @@ $(document).ready(function() {
       .fail(function(XMLHttpRequest) {
         console.log(XMLHttpRequest);
         if (XMLHttpRequest.status === 401) {
-          $('.cd-user-modal').addClass('is-visible')
+          $('.cd-user-modal').addClass('is-visible');
         }
       })
       .always(function() {
@@ -97,7 +99,7 @@ $(document).ready(function() {
       })
       .fail(function(XMLHttpRequest) {
         if (XMLHttpRequest.status === 401) {
-          $('.cd-user-modal').addClass('is-visible')
+          $('.cd-user-modal').addClass('is-visible');
         }
       });
 
@@ -105,7 +107,7 @@ $(document).ready(function() {
 
   //send texts
   $('#ptexts').on('click', '#sendStext', function() {
-    var t = $(this)
+    var t = $(this);
     $.ajax({
       url: 'https://murmuring-wave-7389.herokuapp.com/sendMsg',
       type: 'POST',
