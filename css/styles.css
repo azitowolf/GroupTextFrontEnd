@@ -24,7 +24,7 @@ a:hover{
   text-align: left;
   font-size: 3vw;
   border-radius: 0px;
-  background: url('../img/profile.png');
+  /*background: url('../img/profile.png');*/
 }
 .media{
   margin-top:35px;

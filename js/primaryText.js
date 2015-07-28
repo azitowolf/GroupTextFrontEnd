@@ -2,7 +2,12 @@
 
 //render ptext HTML
 var makePtext = function(id, image, user, text) {
-  var html = "<div data-attr='" + id + "' class='media ptext' id='ptext" + id + "'><div class='media-left'><a class='expand' href='#'><div class='media-object profile'></div></a></div><div class='media-body'><h2 class='media-heading'>" + user + "<a href='#' id=deletePtext class= 'btn btn-danger'> Delete </a> </h2><p><div class='phone-containter'><div id='phone' class='phone'><div class='message left'><div class='message-text'>Hello!</div></div><div class='message right'><div class='message-text'>Hi!</div><div class='message-text'>Where are you now?</div></div><div class='message left'><div class='message-text'>I'm at a party of Clara</div></div></div><div class='send-container'><form id='send'><textarea rows='2' type='text' id='msgInput' class='send-input'>" + text + "</textarea><input type='submit' class='send-btn' value='Send'></form></div></div></p><div class ='stexts hidden'></div></div></div>";
+  var html = "<div data-attr='" + id + "' class='media ptext' id='ptext" + id +
+    "'><div class='media-left'><a class='expand' href='#'><div class='media-object profile'></div></a></div><div class='media-body'><h2 class='media-heading'>" +
+    user +
+    "<a href='#' id=deletePtext class= 'btn btn-danger'> Delete </a> </h2><p><div class='phone-containter'><div id='phone' class='phone'><div class='message left'><div class='message-text'></div></div><div class='message right'><div class='message-text'>Hi!</div><div class='message-text'>Where are you now?</div></div><div class='message left'><div class='message-text'></div></div></div><div class='send-container'><form id='send'><textarea rows='2' type='text' id='msgInput' class='send-input'>" +
+    text +
+    "</textarea><input type='submit' class='send-btn' value='Send'></form></div></div></p><div class ='stexts hidden'></div></div></div>";
   return html;
 };
 
@@ -65,8 +70,8 @@ $('#ptexts').on('click', '#deletePtext', function() {
     })
     .fail(function() {
       console.log("error");
-    })
-})
+    });
+});
 
 // waiting for dom to load before applying click action
 $(document).ready(function() {
@@ -91,7 +96,7 @@ $(document).ready(function() {
       .done(function(contents) {
         console.log(contents);
         var newP = makePtext(contents.ptext.id, contents.ptext.image, contents.ptext.user.name,
-          contents.ptext.text);
+          contents.ptext.text, contents.ptext.image);
         $('#ptexts').append(newP);
         parseText(contents.ptext.history, contents.ptext.id);
         $('.createtext').toggleClass('hidden');

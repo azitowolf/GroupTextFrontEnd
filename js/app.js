@@ -41,7 +41,7 @@ function init() {
       reader.onloadend = function(e) {
         console.log(e.target.result);
         $('#image-preview').attr('src', e.target.result);
-      }
+      };
       reader.readAsDataURL(input.files[0]);
     }
   }

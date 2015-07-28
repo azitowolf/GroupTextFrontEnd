@@ -15,23 +15,25 @@ var authIIFE = (function() {
       currentToken = data['token'];
       window.localStorage.setItem("TOKEN", data['token']);
       window.localStorage.setItem("USER", data['name']);
+      window.localStorage.setItem("AVATAR", data['avatar']);
       console.log(data);
       $('.cd-user-modal').removeClass('is-visible');
       $('#ptexts').empty();
       $('#user-name').html('');
       $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + data['name']);
+      $('#userProfileImage').attr('src', data['avatar']);
       getPtexts();
     }).fail(function(jqxhr, textStatus, errorThrown) {
       // show error message in modal
       var $form_modal = $('.cd-user-modal'),
         $form_login = $form_modal.find('#cd-login'),
-        $form_signup = $form_modal.find('#cd-signup')
+        $form_signup = $form_modal.find('#cd-signup');
       $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
         'is-visible');
       $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
         'is-visible');
     });
-  }
+  };
 
   var register = function() {
     $.ajax('http://localhost:3000/register', {
@@ -40,23 +42,22 @@ var authIIFE = (function() {
       data: JSON.stringify({
         credentials: {
           name: $('#signup-username').val(),
-          image: $('#image-preview').attr('src'),
+          avatar: $('#image-preview').attr('src'),
           email: $('#signup-email').val(),
           password: $('#signup-password').val(),
-          avatar: $('#image-preview').attr('src')
         }
       }),
     }).done(function(data, textStatus) {
       currentToken = data['token'];
       window.localStorage.setItem("TOKEN", data['token']);
       window.localStorage.setItem("USER", data['name']);
-      window.localStorage.setItem("PROFILE", data['image']);
+      window.localStorage.setItem("AVATAR", data['avatar']);
       console.log(data);
       $('.cd-user-modal').removeClass('is-visible');
       $('#ptexts').empty();
       $('#user-name').html('');
       $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + data['name']);
-      $('#userProfileImage').attr('src', data['image']);
+      $('#userProfileImage').attr('src', data['avatar']);
     }).fail(function(jqxhr, textStatus, errorThrown) {
       console.log(textStatus);
     });
@@ -65,16 +66,17 @@ var authIIFE = (function() {
   var session = function() {
     var sessionName = window.localStorage.getItem("USER");
     var sessionToken = window.localStorage.getItem("TOKEN");
+    var sessionAvatar = window.localStorage.getItem("AVATAR");
     $('#ptexts').empty();
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + sessionName);
-    $('#userProfileImage').attr('src', window.localStorage.getItem("PROFILE"));
-  }
+    $('#userProfileImage').attr('src', sessionAvatar);
+  };
 
   return {
     login: login,
     register: register,
     session: session
-  }
+  };
 
 })();
