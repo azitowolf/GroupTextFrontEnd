@@ -1,6 +1,5 @@
-
 var authIIFE = (function() {
-var login = function(){
+  var login = function() {
     $.ajax('https://murmuring-wave-7389.herokuapp.com/login', {
       contentType: 'application/json',
       processData: false,
@@ -23,19 +22,19 @@ var login = function(){
       $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + data['name']);
       getPtexts();
     }).fail(function(jqxhr, textStatus, errorThrown) {
-        // show error message in modal
-        var $form_modal = $('.cd-user-modal'),
+      // show error message in modal
+      var $form_modal = $('.cd-user-modal'),
         $form_login = $form_modal.find('#cd-login'),
         $form_signup = $form_modal.find('#cd-signup')
-        $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
-          'is-visible');
-        $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
-          'is-visible');
+      $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
+        'is-visible');
+      $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
+        'is-visible');
     });
   }
 
   var register = function() {
-    $.ajax('https://murmuring-wave-7389.herokuapp.com/register', {
+    $.ajax('http://localhost:3000/register', {
       contentType: "application/json",
       method: "POST",
       data: JSON.stringify({
@@ -43,7 +42,8 @@ var login = function(){
           name: $('#signup-username').val(),
           image: 'http://strawberry.com',
           email: $('#signup-email').val(),
-          password: $('#signup-password').val()
+          password: $('#signup-password').val(),
+          avatar: $('#image-preview').attr('src')
         }
       }),
     }).done(function(data, textStatus) {

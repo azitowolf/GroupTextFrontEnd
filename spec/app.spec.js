@@ -1,44 +1,51 @@
-describe("get Ptexts function", function() {
-  it("exists", function() {
-    expect(getPtexts).toExist();
+describe("FRONT END JAVASCRIPT TESTS", function(){
+
+  describe("get Ptexts function", function() {
+
+    beforeEach(function() {
+      setUpHTMLFixture();
+    });
+
+    it("exists", function() {
+      expect(getPtexts).toExist();
+    });
   });
-});
 
-describe("learn more div reveal function", function() {
+  describe("Learn More Button", function(){
 
-  it("exists", function() {
-    expect($('#go-button').click).toBeTruthy();
+    beforeEach(function() {
+      setUpHTMLFixture();
+    });
+
+    it("Exists", function(){
+      expect($('#learnmore-btn')).toExist();
+    });
+
+    it("Invokes the Clickhandler", function(){
+      var spyEvent = spyOnEvent('#learnmore-btn', 'click')
+        $('#learnmore-btn').click()
+        expect('click').toHaveBeenTriggeredOn('#learnmore-btn')
+        expect(spyEvent).toHaveBeenTriggered()
+    })
+
+    it("Reveals the Div", function(){
+        expect($('.learnmore')).toHaveClass('hidden');
+        $('#learnmore-btn').click()
+        expect($('.learnmore')).toHaveText($('.learnmore p').html());
+    })
+
   });
 
-  it("is called on an existing DOM element", function() {
-    sandbox({
-  id: 'my-id',
-  class: 'my-class',
-  myattr: 'my-attr'
+  describe("new Ptext Button", function() {
+
+    beforeEach(function() {
+      setUpHTMLFixture();
+    });
+
+    it('Exists in the DOM', function(){
+      expect($('.createPtext')).toBeInDOM()
+    })
+
+  });
+
 })
-    expect($("#my-id")).toBeInDOM();
-
-  });
-
-});
-
-describe("new Ptext reveal function", function() {
-
-  $('.createPtext').click(function() {
-    $('.createtext').toggleClass('hidden');
-  });
-
-  // it("triggers click event", function() {
-  //   var spyEvent = spyOnEvent('.createPtext', 'click')
-  //     $('.createPtext').click()
-  //     expect('click').toHaveBeenTriggeredOn('.createPtext')
-  //     expect(spyEvent).toHaveBeenTriggered()
-  // });
-});
-
-describe("new Ptext reveal function", function() {
-
-  it("exists", function() {
-    expect($('.createPtext').click).toBeTruthy();
-  });
-});

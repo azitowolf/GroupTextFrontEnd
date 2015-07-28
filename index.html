@@ -99,6 +99,7 @@
             <span class="cd-error-message">We couldn't find your account! Sorry!</span>
           </p>
 
+
           <p class="fieldset">
             <input type="checkbox" id="accept-terms">
             <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
@@ -108,6 +109,14 @@
             <input id="register" class="full-width has-padding" type="submit" value="Create account">
           </p>
         </form>
+
+          <p class="fieldset">
+
+              <input id="signup-avatar" type="file" name="file" accept="image/*">
+
+              <img src="" height="200" alt="Image preview" id="image-preview">
+
+          </p>
 
         <!-- <a href="#0" class="cd-close-form">Close</a> -->
       </div> <!-- cd-signup -->
@@ -157,6 +166,7 @@
 
           <label for="recipientNumber">Recipient Number</label>
           <input type="text" class="form-control" id="recipientNumber" placeholder="ex 6171234567">
+
         </div>
         <div class="form-group">
 
@@ -193,7 +203,9 @@
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="js/textBox.js"></script>
   <script src="js/modal.js"></script>
-
+  <script src="js/processing.js"></script>
+  <script src="js/jquery.ui.widget.js"></script>
+  <script src="js/jquery.fileupload.js"></script>
 
   <script src="js/suggestedText.js"></script>
   <script src="js/primaryText.js"></script>
