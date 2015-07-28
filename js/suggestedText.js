@@ -105,6 +105,27 @@ $(document).ready(function() {
 
   });
 
+  //AJAX to delete ptext
+  $('.row').on('click', '#deleteStext', function() {
+    var $id = $(this).closest('.stext').attr('id');
+    var t = $(this);
+    $.ajax({
+      url: path + '/ptexts/' + $(this).closest('.ptext').attr('data-attr') + '/stexts/' + $id,
+      headers: {
+        Authorization: 'Token token=' + currentToken
+      },
+      type: 'DELETE',
+      dataType: 'json',
+    })
+      .done(function() {
+        console.log("success");
+        $(t).closest('.stext').toggleClass('hidden');
+      })
+      .fail(function() {
+        console.log("error");
+      });
+  });
+
   //send texts
   $('#ptexts').on('click', '#sendStext', function() {
     var t = $(this);

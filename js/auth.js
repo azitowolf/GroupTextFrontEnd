@@ -1,6 +1,6 @@
 var authIIFE = (function() {
   var login = function() {
-    $.ajax('https://murmuring-wave-7389.herokuapp.com/login', {
+    $.ajax(path + '/login', {
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify({
@@ -36,7 +36,7 @@ var authIIFE = (function() {
   };
 
   var register = function() {
-    $.ajax('http://localhost:3000/register', {
+    $.ajax(path + '/register', {
       contentType: "application/json",
       method: "POST",
       data: JSON.stringify({

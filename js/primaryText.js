@@ -58,7 +58,7 @@ $('#ptexts').on('click', '#deletePtext', function() {
   var $id = $(this).closest('.ptext').attr('data-attr');
   var t = $(this);
   $.ajax({
-    url: 'https://murmuring-wave-7389.herokuapp.com/ptexts/' + $id,
+    url: path + '/ptexts/' + $id,
     headers: {
       Authorization: 'Token token=' + currentToken
     },
