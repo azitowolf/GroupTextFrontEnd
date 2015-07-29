@@ -1,8 +1,8 @@
 //USER.JS
+var ptext = ptextIIFE;
+var userIIFE = (function(ptext) {
 
-var userIIFE = (function() {
-
-  saveLocalData = function(user) {
+  _saveLocalData = function(user) {
     localStorage.clear();
     currentToken = user.token;
     window.localStorage.setItem("TOKEN", user.token);
@@ -10,7 +10,7 @@ var userIIFE = (function() {
     window.localStorage.setItem("AVATAR", user.avatar);
   }; // Store user data locally
 
-  updateUserPage = function(user) {
+  _updateUserPage = function(user) {
     $('.cd-user-modal').removeClass('is-visible');
     $('#ptexts').empty();
     $('#user-name').html('');
@@ -35,9 +35,9 @@ var userIIFE = (function() {
       dataType: "json",
       method: "POST"
     }).done(function(data) {
-      saveLocalData(data);
-      updateUserPage(data);
-      getPtexts();
+      _saveLocalData(data);
+      _updateUserPage(data);
+      ptext.getPtexts();
     }).fail(function(jqxhr, textStatus, errorThrown) {
       // show error message in modal
       $form_login.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
@@ -60,16 +60,23 @@ var userIIFE = (function() {
         }
       }),
     }).done(function(data, textStatus) {
-      saveLocalData(data);
-      updateUserPage(data);
+      _saveLocalData(data);
+      _updateUserPage(data);
     }).fail(function(jqxhr, textStatus, errorThrown) {
       console.log(textStatus);
     });
   }; // Register
 
+  var logout = function() {
+    $('#user-name').html('not logged in');
+    $('#userProfileImage').hide();
+    localStorage.clear();
+    currentToken = "";
+  };
+
   var session = function() {
     currentToken = window.localStorage.getItem("TOKEN");
-    var sessionName = window.localStorage.getItem("USER");
+    var sessionName = window.localStorage.getItem("USER") || 'not logged in';
     var sessionToken = window.localStorage.getItem("TOKEN");
     var sessionAvatar = window.localStorage.getItem("AVATAR");
     $('#ptexts').empty();
@@ -93,7 +100,8 @@ var userIIFE = (function() {
     login: login,
     register: register,
     session: session,
+    logout: logout,
     readURL: readURL
   };
 
-})();
+})(ptext);

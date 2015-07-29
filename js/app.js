@@ -18,6 +18,7 @@ function init() {
   $('input[name="file"]').on('change', function(e) {
     user.readURL(this);
   });
+  $('#logout').on('click', user.logout);
   //Hide and show buttons
   $('#learnmore-btn').click(function(event) {
     event.preventDefault();
