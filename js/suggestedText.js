@@ -5,8 +5,8 @@
 //render Stext HTML
 var makeStext = function(id, user, avatar, text, votes) {
   var html = "<div class='media stext' id='" + id +
-    "'><div class='media-left'><a class='expand' href='#'><img src=" + avatar +
-    " class='media-object voteCount'></a></div><div class='media-body'><h4 class='media-heading'>" +
+    "'><div class='media-left'><a class='expand' href='#'><img src='" + avatar +
+    "' class='media-object voteCount'></a></div><div class='media-body'><h4 class='media-heading'>" +
     user + "</h4> <div class='message left'><div class='message-text smsg'>" + text +
     "</div></div></p><div>Votes: <div id='votes'> " + votes +
     "<a href='#' id='vote' class='btn btn-success'>Vote</a> <a href='#' id='deleteStext' class='btn btn-danger'>Delete</a> <a href='#' id='sendStext' data-text='" +
@@ -59,7 +59,7 @@ $(document).ready(function() {
       .done(function(item) {
         var newS = makeStext(item.stext.id, item.stext.user.name, window.localStorage.getItem("AVATAR"), item.stext.text, item.stext
           .virtual);
-        console.log(item);
+        console.log(newS);
         $($t).parent().parent().parent().siblings('.stexts').append(newS);
         $($t).parent().parent().parent().siblings('.stexts').removeClass('hidden');
         //   var targetTitle = $($t).siblings("#textTitle").val("");

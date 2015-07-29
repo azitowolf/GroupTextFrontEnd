@@ -1,18 +1,22 @@
 var currentToken;
 var path = 'http://localhost:3000';
 var heroku = 'https://murmuring-wave-7389.herokuapp.com';
-var auth = authIIFE;
+var user = userIIFE;
+var ptext = ptextIIFE;
 
 function init() {
   //Check localstorage for a user token
-  auth.session();
+  user.session();
   //Populate all Primary texts and their Suggested texts
-  getPtexts();
+  ptext.getPtexts();
   //AJAX for creating user token on login
-  $('#loginBtn').on('click', auth.login);
+  $('#loginBtn').on('click', user.login);
   //AJAX for registering a new user
-  $('#register').on('click', auth.register);
-
+  $('#register').on('click', user.register);
+  //64bit Encoding for images
+  $('input[name="file"]').on('change', function(e) {
+    user.readURL(this);
+  });
   //Hide and show buttons
   $('#learnmore-btn').click(function(event) {
     event.preventDefault();
@@ -30,22 +34,17 @@ function init() {
   $('#ptexts').on('click', 'a', function(event) {
     event.preventDefault();
   });
-
-  $('input[name="file"]').on('change', function(e) {
-    readURL(this);
+  // Button for creating a new Ptext
+  $('#new-post-button').click(ptext.createPtext);
+  //add click functionality to the ptexts
+  $('#ptexts').on('click', '.expand', function(event) {
+    event.preventDefault();
+    $(this).parents().siblings('.media-body').children('.stexts').toggleClass('hidden');
   });
 
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
+  //AJAX to delete ptext
+  $('#ptexts').on('click', '#deletePtext', ptext.deletePtext);
 
-      reader.onloadend = function(e) {
-        console.log(e.target.result);
-        $('#image-preview').attr('src', e.target.result);
-      };
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
 }
 
 $(document).ready(function($) {
