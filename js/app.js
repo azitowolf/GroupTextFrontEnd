@@ -3,6 +3,7 @@ var path = 'http://localhost:3000';
 var heroku = 'https://murmuring-wave-7389.herokuapp.com';
 var user = userIIFE;
 var ptext = ptextIIFE;
+var stext = stextIIFE;
 
 function init() {
   //Check localstorage for a user token
@@ -44,6 +45,18 @@ function init() {
 
   //AJAX to delete ptext
   $('#ptexts').on('click', '#deletePtext', ptext.deletePtext);
+
+  //create new Stext and render it in the DOM
+  $('#ptexts').on('click', '.send-btn', stext.createStext);
+
+  // vote function
+  $('#ptexts').on('click', '#vote', stext.vote);
+
+  //AJAX to delete ptext
+  $('.row').on('click', '#deleteStext', stext.deleteStext);
+
+  //send texts
+  $('#ptexts').on('click', '#sendStext', stext.sendStext);
 
 }
 

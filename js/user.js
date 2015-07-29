@@ -8,7 +8,7 @@ var userIIFE = (function() {
     window.localStorage.setItem("TOKEN", user.token);
     window.localStorage.setItem("USER", user.name);
     window.localStorage.setItem("AVATAR", user.avatar);
-  };
+  }; // Store user data locally
 
   updateUserPage = function(user) {
     $('.cd-user-modal').removeClass('is-visible');
@@ -16,7 +16,7 @@ var userIIFE = (function() {
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + user.name);
     $('#userProfileImage').attr('src', user.avatar);
-  };
+  }; // Update page elements
 
   var login = function() {
     var $form_modal = $('.cd-user-modal'),
@@ -45,7 +45,7 @@ var userIIFE = (function() {
       $form_signup.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass(
         'is-visible');
     });
-  };
+  }; //Login
 
   var register = function() {
     $.ajax(path + '/register', {
@@ -65,7 +65,7 @@ var userIIFE = (function() {
     }).fail(function(jqxhr, textStatus, errorThrown) {
       console.log(textStatus);
     });
-  };
+  }; // Register
 
   var session = function() {
     currentToken = window.localStorage.getItem("TOKEN");
@@ -76,7 +76,7 @@ var userIIFE = (function() {
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + sessionName);
     $('#userProfileImage').attr('src', sessionAvatar);
-  };
+  }; // Retrieve session variables
 
   function readURL(input) {
     if (input.files && input.files[0]) {
@@ -87,7 +87,7 @@ var userIIFE = (function() {
       };
       reader.readAsDataURL(input.files[0]);
     }
-  }
+  } // Encode image for storage
 
   return {
     login: login,

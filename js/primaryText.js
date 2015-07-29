@@ -1,7 +1,8 @@
 //PRIMARYTEXT.js
-var ptextIIFE = (function() {
 
-  //render ptext HTML
+var stext = stextIIFE; //importing functions from stexts.js
+var ptextIIFE = (function(stext) {
+
   _makePtext = function(id, avatar, user, text) {
     var html = "<div data-attr='" + id + "' class='media ptext' id='ptext" + id +
       "'><div class='media-left'><a class='expand' href='#'><img src = '" + avatar +
@@ -11,9 +12,8 @@ var ptextIIFE = (function() {
       text +
       "</textarea><input type='submit' class='send-btn' value='Send'></form></div></div></p><div class ='stexts hidden'></div></div></div>";
     return html;
-  };
+  }; // Render Function
 
-  //AJAX request for all ptexts
   var getPtexts = function() {
     $.ajax({
       url: path + '/ptexts',
@@ -25,8 +25,6 @@ var ptextIIFE = (function() {
     })
       .done(function(contents) {
         contents.ptexts.forEach(function(val) {
-
-          //make the ptexts
           $('#ptexts').append(_makePtext(val.id, val.user.avatar, val.user.name, val.text));
           parseText(val.history, val.id);
 
@@ -38,20 +36,15 @@ var ptextIIFE = (function() {
               return true;
             }
           }
-
-          //get all stexts for ptext with current id and append to current id
           var $stextDiv = $('#ptext' + val.id + ' .stexts');
-          getStexts(val.id, $stextDiv, isOwnedByUser());
-
+          stext.getStexts(val.id, $stextDiv, isOwnedByUser());
         });
-
-        //end done function
       })
       .fail(function() {
         console.log("error");
       });
-  };
-  //AJAX to create Ptext
+  }; // Get P texts
+
   var createPtext = function(event) {
     event.preventDefault();
     $.ajax({
@@ -83,7 +76,7 @@ var ptextIIFE = (function() {
           $('.cd-user-modal').addClass('is-visible');
         }
       });
-  };
+  }; // Create P texts
 
   var deletePtext = function() {
     var $id = $(this).closest('.ptext').attr('data-attr');
@@ -103,12 +96,12 @@ var ptextIIFE = (function() {
       .fail(function() {
         console.log("error");
       });
-  };
+  }; // Delete P texts
 
   return {
     getPtexts: getPtexts,
     deletePtext: deletePtext,
     createPtext: createPtext
-  };
+  }; //Export functions
 
-})();
+})(stext);

@@ -1,43 +1,40 @@
 //SUGGESTEDTEXT.js
-// All functions should be in the protected controller
-// View, add and delete Suggested texts
 
-//render Stext HTML
-var makeStext = function(id, user, avatar, text, votes) {
-  var html = "<div class='media stext' id='" + id +
-    "'><div class='media-left'><a class='expand' href='#'><img src='" + avatar +
-    "' class='media-object voteCount'></a></div><div class='media-body'><h4 class='media-heading'>" +
-    user + "</h4> <div class='message left'><div class='message-text smsg'>" + text +
-    "</div></div></p><div>Votes: <div id='votes'> " + votes +
-    "<a href='#' id='vote' class='btn btn-success'>Vote</a> <a href='#' id='deleteStext' class='btn btn-danger'>Delete</a> <a href='#' id='sendStext' data-text='" +
-    text +
-    "''  class= 'sendStext btn btn-warning'> Send </a></div></div></div></div>";
-  return html;
-};
+var stextIIFE = (function() {
 
-//getStexts -get all stexts for ptext with ID
-function getStexts(id, location, owned) {
-  $.ajax({
-    url: path + '/ptexts/' + id + "/stexts",
-    type: 'GET',
-    dataType: 'json'
-  }).done(function(contents) {
-    contents.stexts.forEach(function(val) {
-      location.append(makeStext(val.id, val.user.name, val.user.avatar, val.text, val.virtual));
-      if (!owned) {
-        $('#ptext' + id + ' .sendStext').addClass('hidden');
-        $('#ptext' + id + ' .deleteStext').addClass('hidden');
-      }
+  _makeStext = function(id, user, avatar, text, votes) {
+    var html = "<div class='media stext' id='" + id +
+      "'><div class='media-left'><a class='expand' href='#'><img src='" + avatar +
+      "' class='media-object voteCount'></a></div><div class='media-body'><h4 class='media-heading'>" +
+      user + "</h4> <div class='message left'><div class='message-text smsg'>" + text +
+      "</div></div></p><div>Votes: <div id='votes'> " + votes +
+      "<a href='#' id='vote' class='btn btn-success'>Vote</a> <a href='#' id='deleteStext' class='btn btn-danger'>Delete</a> <a href='#' id='sendStext' data-text='" +
+      text +
+      "''  class= 'sendStext btn btn-warning'> Send </a></div></div></div></div>";
+    return html;
+  };
 
+  //getStexts -get all stexts for ptext with ID
+  var getStexts = function(id, location, owned) {
+    $.ajax({
+      url: path + '/ptexts/' + id + "/stexts",
+      type: 'GET',
+      dataType: 'json'
+    }).done(function(contents) {
+      contents.stexts.forEach(function(val) {
+        location.append(_makeStext(val.id, val.user.name, val.user.avatar, val.text, val.virtual));
+        if (!owned) {
+          $('#ptext' + id + ' .sendStext').addClass('hidden');
+          $('#ptext' + id + ' .deleteStext').addClass('hidden');
+        }
+
+      });
+    }).fail(function() {
+      console.log("error");
     });
-  }).fail(function() {
-    console.log("error");
-  });
-}
+  };
 
-$(document).ready(function() {
-  //create new Stext and render it in the DOM
-  $('#ptexts').on('click', '.send-btn', function(event) {
+  var createStext = function(event) {
     event.preventDefault();
     var $t = event.target;
     var targetText = $($t).siblings('#msgInput').val();
@@ -57,7 +54,7 @@ $(document).ready(function() {
       }
     })
       .done(function(item) {
-        var newS = makeStext(item.stext.id, item.stext.user.name, window.localStorage.getItem("AVATAR"), item.stext.text, item.stext
+        var newS = _makeStext(item.stext.id, item.stext.user.name, window.localStorage.getItem("AVATAR"), item.stext.text, item.stext
           .virtual);
         console.log(newS);
         $($t).parent().parent().parent().siblings('.stexts').append(newS);
@@ -74,11 +71,11 @@ $(document).ready(function() {
       .always(function() {
         console.log("complete");
       });
+  };
 
-  });
 
-  // vote function
-  $('#ptexts').on('click', '#vote', function() {
+
+  var vote = function() {
     var $t = event.target;
     var ptextID = $($t).closest('.ptext').attr('id');
     var stextID = $($t).closest('.stext').attr('id');
@@ -102,11 +99,11 @@ $(document).ready(function() {
           $('.cd-user-modal').addClass('is-visible');
         }
       });
+  };
 
-  });
 
-  //AJAX to delete ptext
-  $('.row').on('click', '#deleteStext', function() {
+
+  var deleteStext = function() {
     var $id = $(this).closest('.stext').attr('id');
     var t = $(this);
     $.ajax({
@@ -124,13 +121,14 @@ $(document).ready(function() {
       .fail(function() {
         console.log("error");
       });
-  });
+  };
 
-  //send texts
-  $('#ptexts').on('click', '#sendStext', function() {
+
+
+  var sendStext = function() {
     var t = $(this);
     $.ajax({
-      url: 'https://murmuring-wave-7389.herokuapp.com/sendMsg',
+      url: path + '/sendMsg',
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken
@@ -146,9 +144,15 @@ $(document).ready(function() {
       })
       .fail(function() {
         console.log("error");
-      })
+      });
+  };
 
+  return {
+    getStexts: getStexts,
+    createStext: createStext,
+    vote: vote,
+    deleteStext: deleteStext,
+    sendStext: sendStext
+  };
 
-  })
-  //end document ready
-});
+})();
