@@ -23,7 +23,7 @@ var userIIFE = (function(ptext) {
       $form_login = $form_modal.find('#cd-login'),
       $form_signup = $form_modal.find('#cd-signup');
 
-    $.ajax(path + '/login', {
+    $.ajax(heroku + '/login', {
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify({
@@ -48,7 +48,7 @@ var userIIFE = (function(ptext) {
   }; //Login
 
   var register = function() {
-    $.ajax(path + '/register', {
+    $.ajax(heroku + '/register', {
       contentType: "application/json",
       method: "POST",
       data: JSON.stringify({
@@ -72,7 +72,7 @@ var userIIFE = (function(ptext) {
     $('#userProfileImage').hide();
     localStorage.clear();
     currentToken = "";
-  };
+  }; // Logout
 
   var session = function() {
     currentToken = window.localStorage.getItem("TOKEN");

@@ -17,7 +17,7 @@ var stextIIFE = (function() {
   //getStexts -get all stexts for ptext with ID
   var getStexts = function(id, location, owned) {
     $.ajax({
-      url: path + '/ptexts/' + id + "/stexts",
+      url: heroku + '/ptexts/' + id + "/stexts",
       type: 'GET',
       dataType: 'json'
     }).done(function(contents) {
@@ -40,7 +40,7 @@ var stextIIFE = (function() {
     var targetText = $($t).siblings('#msgInput').val();
     var targetID = $($t).closest('.ptext').attr('data-attr');
     $.ajax({
-      url: path + '/ptexts/' + targetID + "/stexts",
+      url: heroku + '/ptexts/' + targetID + "/stexts",
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken
@@ -107,7 +107,7 @@ var stextIIFE = (function() {
     var $id = $(this).closest('.stext').attr('id');
     var t = $(this);
     $.ajax({
-      url: path + '/ptexts/' + $(this).closest('.ptext').attr('data-attr') + '/stexts/' + $id,
+      url: heroku + '/ptexts/' + $(this).closest('.ptext').attr('data-attr') + '/stexts/' + $id,
       headers: {
         Authorization: 'Token token=' + currentToken
       },
@@ -128,7 +128,7 @@ var stextIIFE = (function() {
   var sendStext = function() {
     var t = $(this);
     $.ajax({
-      url: path + '/sendMsg',
+      url: heroku + '/sendMsg',
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken
