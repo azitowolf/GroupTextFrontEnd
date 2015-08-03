@@ -16,7 +16,7 @@ var ptextIIFE = (function(stext) {
 
   var getPtexts = function() {
     $.ajax({
-      url: heroku + '/ptexts',
+      url: path + '/ptexts',
       type: 'GET',
       headers: {
         Authorization: 'Token token=' + currentToken
@@ -48,7 +48,7 @@ var ptextIIFE = (function(stext) {
   var createPtext = function(event) {
     event.preventDefault();
     $.ajax({
-      url: heroku + '/ptexts',
+      url: path + '/ptexts',
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken
@@ -82,7 +82,7 @@ var ptextIIFE = (function(stext) {
     var $id = $(this).closest('.ptext').attr('data-attr');
     var t = $(this);
     $.ajax({
-      url: heroku + '/ptexts/' + $id,
+      url: path + '/ptexts/' + $id,
       headers: {
         Authorization: 'Token token=' + currentToken
       },

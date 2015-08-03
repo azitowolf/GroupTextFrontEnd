@@ -17,7 +17,7 @@ var stextIIFE = (function() {
   //getStexts -get all stexts for ptext with ID
   var getStexts = function(id, location, owned) {
     $.ajax({
-      url: heroku + '/ptexts/' + id + "/stexts",
+      url: path + '/ptexts/' + id + "/stexts",
       type: 'GET',
       dataType: 'json'
     }).done(function(contents) {
@@ -40,7 +40,7 @@ var stextIIFE = (function() {
     var targetText = $($t).siblings('#msgInput').val();
     var targetID = $($t).closest('.ptext').attr('data-attr');
     $.ajax({
-      url: heroku + '/ptexts/' + targetID + "/stexts",
+      url: path + '/ptexts/' + targetID + "/stexts",
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken
@@ -56,9 +56,10 @@ var stextIIFE = (function() {
       .done(function(item) {
         var newS = _makeStext(item.stext.id, item.stext.user.name, window.localStorage.getItem("AVATAR"), item.stext.text, item.stext
           .virtual);
-        console.log(newS);
+        console.log(item);
         $($t).parent().parent().parent().siblings('.stexts').append(newS);
         $($t).parent().parent().parent().siblings('.stexts').removeClass('hidden');
+        $('.stexts #' + item.stext.id + ' .sendStext').addClass('hidden');
         //   var targetTitle = $($t).siblings("#textTitle").val("");
         //   var targetHistory = $($t).siblings("#textHistory").val("");
       })
@@ -81,7 +82,7 @@ var stextIIFE = (function() {
     var stextID = $($t).closest('.stext').attr('id');
 
     $.ajax({
-      url: 'https://murmuring-wave-7389.herokuapp.com/ptexts/' + ptextID + '/stexts/' +
+      url: path + '/ptexts/' + ptextID + '/stexts/' +
         stextID + '/vote',
       type: 'POST',
       dataType: 'json',
@@ -107,7 +108,7 @@ var stextIIFE = (function() {
     var $id = $(this).closest('.stext').attr('id');
     var t = $(this);
     $.ajax({
-      url: heroku + '/ptexts/' + $(this).closest('.ptext').attr('data-attr') + '/stexts/' + $id,
+      url: path + '/ptexts/' + $(this).closest('.ptext').attr('data-attr') + '/stexts/' + $id,
       headers: {
         Authorization: 'Token token=' + currentToken
       },
@@ -128,7 +129,7 @@ var stextIIFE = (function() {
   var sendStext = function() {
     var t = $(this);
     $.ajax({
-      url: heroku + '/sendMsg',
+      url: path + '/sendMsg',
       type: 'POST',
       headers: {
         Authorization: 'Token token=' + currentToken

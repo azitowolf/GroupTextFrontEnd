@@ -16,6 +16,7 @@ var userIIFE = (function(ptext) {
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + user.name);
     $('#userProfileImage').attr('src', user.avatar);
+    $('#userProfileImage').show();
   }; // Update page elements
 
   var login = function() {
@@ -23,7 +24,7 @@ var userIIFE = (function(ptext) {
       $form_login = $form_modal.find('#cd-login'),
       $form_signup = $form_modal.find('#cd-signup');
 
-    $.ajax(heroku + '/login', {
+    $.ajax(path + '/login', {
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify({
@@ -35,6 +36,7 @@ var userIIFE = (function(ptext) {
       dataType: "json",
       method: "POST"
     }).done(function(data) {
+      console.log(data);
       _saveLocalData(data);
       _updateUserPage(data);
       ptext.getPtexts();
@@ -48,7 +50,7 @@ var userIIFE = (function(ptext) {
   }; //Login
 
   var register = function() {
-    $.ajax(heroku + '/register', {
+    $.ajax(path + '/register', {
       contentType: "application/json",
       method: "POST",
       data: JSON.stringify({
@@ -62,6 +64,7 @@ var userIIFE = (function(ptext) {
     }).done(function(data, textStatus) {
       _saveLocalData(data);
       _updateUserPage(data);
+      ptext.getPtexts();
     }).fail(function(jqxhr, textStatus, errorThrown) {
       console.log(textStatus);
     });
@@ -79,7 +82,7 @@ var userIIFE = (function(ptext) {
     var sessionName = window.localStorage.getItem("USER") || 'not logged in';
     var sessionToken = window.localStorage.getItem("TOKEN");
     var sessionAvatar = window.localStorage.getItem("AVATAR");
-    $('#ptexts').empty();
+
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + sessionName);
     $('#userProfileImage').attr('src', sessionAvatar);
