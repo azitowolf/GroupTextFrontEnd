@@ -58,6 +58,7 @@ var ptextIIFE = (function(stext) {
         ptext: {
           history: $('#textHistory').val(),
           text: $('#currentText').val(),
+          number: $('#recipientNumber').val(),
           avatar: window.localStorage.getItem("AVATAR")
         }
       }

@@ -135,12 +135,13 @@ var stextIIFE = (function() {
       },
       dataType: 'json',
       data: {
-        number: "6172762096",
+        from: currentToken,
+        to: $(t).closest('.ptext').attr('data-attr'),
         text: $(t).attr('data-text')
       }
     })
-      .done(function() {
-        console.log("success");
+      .done(function(data) {
+        console.log(data);
       })
       .fail(function() {
         console.log("error");
