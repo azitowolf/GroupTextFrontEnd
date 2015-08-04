@@ -3,7 +3,7 @@ var ptext = ptextIIFE;
 var userIIFE = (function(ptext) {
 
   _saveLocalData = function(user) {
-    localStorage.clear();
+
     currentToken = user.token;
     window.localStorage.setItem("TOKEN", user.token);
     window.localStorage.setItem("USER", user.name);
@@ -24,7 +24,7 @@ var userIIFE = (function(ptext) {
       $form_login = $form_modal.find('#cd-login'),
       $form_signup = $form_modal.find('#cd-signup');
 
-    $.ajax(heroku + '/login', {
+    $.ajax(path + '/login', {
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify({
@@ -50,7 +50,7 @@ var userIIFE = (function(ptext) {
   }; //Login
 
   var register = function() {
-    $.ajax(heroku + '/register', {
+    $.ajax(path + '/register', {
       contentType: "application/json",
       method: "POST",
       data: JSON.stringify({
@@ -62,7 +62,8 @@ var userIIFE = (function(ptext) {
         }
       }),
     }).done(function(data, textStatus) {
-      logout();
+      console.log(data);
+      // logout();
       _saveLocalData(data);
       _updateUserPage(data);
       ptext.getPtexts();
