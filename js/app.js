@@ -1,6 +1,5 @@
 var currentToken;
 var path = 'http://localhost:3000';
-var heroku = 'https://murmuring-wave-7389.herokuapp.com';
 var user = userIIFE;
 var ptext = ptextIIFE;
 var stext = stextIIFE;

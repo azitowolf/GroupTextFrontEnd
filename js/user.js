@@ -24,7 +24,7 @@ var userIIFE = (function(ptext) {
       $form_login = $form_modal.find('#cd-login'),
       $form_signup = $form_modal.find('#cd-signup');
 
-    $.ajax(heroku + '/login', {
+    $.ajax(path + '/login', {
       contentType: 'application/json',
       processData: false,
       data: JSON.stringify({
@@ -50,7 +50,7 @@ var userIIFE = (function(ptext) {
   }; //Login
 
   var register = function() {
-    $.ajax(heroku + '/register', {
+    $.ajax(path + '/register', {
       contentType: "application/json",
       method: "POST",
       data: JSON.stringify({
@@ -59,6 +59,7 @@ var userIIFE = (function(ptext) {
           avatar: $('#image-preview').attr('src'),
           email: $('#signup-email').val(),
           password: $('#signup-password').val(),
+          number: $('#signup-number').val()
         }
       }),
     }).done(function(data, textStatus) {
