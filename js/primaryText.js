@@ -39,6 +39,7 @@ var ptextIIFE = (function(stext) {
           var $stextDiv = $('#ptext' + val.id + ' .stexts');
           stext.getStexts(val.id, $stextDiv, isOwnedByUser());
         });
+        $('#loader-wrapper').fadeOut(300);
       })
       .fail(function() {
         console.log("error");

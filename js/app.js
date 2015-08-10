@@ -6,6 +6,7 @@ var ptext = ptextIIFE;
 var stext = stextIIFE;
 
 function init() {
+
   //Check localstorage for a user token
   user.session();
   //Populate all Primary texts and their Suggested texts
@@ -63,4 +64,5 @@ function init() {
 
 $(document).ready(function($) {
   init();
+
 });
