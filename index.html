@@ -15,27 +15,26 @@
 </head>
 <body>
 
-
-
-<div class="dropdown">
-  <img id= "userProfileImage" src="" alt="" width="80px">
-  <button class="btn btn-default dropdown-toggle" type="button" id="user-name" data-toggle="dropdown" aria-expanded="false">
-    not logged in
-  </button>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="user-name">
-    <li id="viewAccount" role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Texts</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sent Texts</a></li>
-    <li id="logout" role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign Out</a></li>
-  </ul>
-</div>
-
   <div class="container main">
 
+  <div id="stage">
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="user-name" data-toggle="dropdown" aria-expanded="false">
+        not logged in
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="user-name">
+        <li id="viewAccount" role="presentation"><a role="menuitem" tabindex="-1" href="#">Account</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Your Texts</a></li>
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Sent Texts</a></li>
+        <li id="cd-logo"><a href="#0" class="createPtext"><i class="glyphicon glyphicon-plus"></i>Add a text</a></li>
+        <li id="logout" role="presentation"><a role="menuitem" tabindex="-1" href="#">Sign Out</a></li>
+      </ul>
+    </div>
+
+  </div>
+
   <header class= "header" role="banner">
-
-         <div id="cd-logo"><a href="#0" class="createPtext"><i class="glyphicon glyphicon-plus"></i>Add a text</a></div>
-
     <nav class="main-nav">
       <ul>
         <li><a class="cd-signin" href="#0">Sign in</a></li>
@@ -148,51 +147,51 @@
     </div> <!-- cd-user-modal-container -->
   </div> <!-- cd-user-modal -->
 
-
-
-
-  <div class="login hidden"><input id="email" type="text" value= "azw@verizon.net" class="form-control" placeholder="e-mail">  <input id="password" class="form-control" type="password" value="123" placeholder="password">
-    <input id="get-token" class="btn btn-success" type="button" value="Log In">
-  </div>
-
 <!-- Create New Text -->
-    <div class="jumbotron text-center createtext hidden">
+  <div class="jumbotron text-center createtext hidden">
 
-      <form >
-        <div class="form-group">
-          <p class="help-block">Enter your text history in the format #1: Hi #2 how are you #2: I'm great etc...</p>
+    <form >
+      <div class="form-group">
+        <p class="help-block">Enter your text history in the format #1: Hi #2 how are you #2: I'm great etc...</p>
 
-          <label for="textHistory">Text history</label>
-          <textarea type="text" class="form-control" id="textHistory" placeholder="Enter Text History"></textarea>
-        </div>
-        <div class="form-group">
+        <label for="textHistory">Text history</label>
+        <textarea type="text" class="form-control" id="textHistory" placeholder="Enter Text History"></textarea>
+      </div>
+      <div class="form-group">
 
-          <label for="currentText">Current Text</label>
-          <input type="text" class="form-control" id="currentText" placeholder="What Your Gonna Send">
+        <label for="currentText">Current Text</label>
+        <input type="text" class="form-control" id="currentText" placeholder="What Your Gonna Send">
 
-          <label for="recipientNumber">Recipient Number</label>
-          <input type="text" class="form-control" id="recipientNumber" placeholder="ex 6171234567">
+        <label for="recipientNumber">Recipient Number</label>
+        <input type="text" class="form-control" id="recipientNumber" placeholder="ex 6171234567">
 
-        </div>
-        <div class="form-group">
+      </div>
+      <div class="form-group">
 
 
-        </div>
-      </form>
-      <a href="#" id="new-post-button" class="btn btn-success">Post</a>
-    </div>
+      </div>
+    </form>
+    <a href="#" id="new-post-button" class="btn btn-success">Post</a>
+  </div>
 
 <!-- Intro -->
 
-    <div class="jumbotron text-center info">
-      <h1>TextHelp</h1>
-      <p>Help your friends write their texts</p>
-      <a href="#" id="learnmore-btn" class="btn btn-success">Learn More</a>
-    </div>
-    <div class= "learnmore hidden">
-      <p>post a text and the history behind it. your friends can suggest what to text back and then vote on the best answer. you can choose what text <strong>gets sent</strong>. made by <a href="https://github.com/azitowolf/">@azitowolf</a> in Boston.</p>
-    </div>
+  <div class="jumbotron text-center info">
+    <h1>TextHelp</h1>
+    <p>Help your friends write their texts</p>
+    <a href="#" id="learnmore-btn" class="btn btn-success">Learn More</a>
+  </div>
+  <div class= "learnmore hidden">
+    <p>post a text and the history behind it. your friends can suggest what to text back and then vote on the best answer. you can choose what text <strong>gets sent</strong>. made by <a href="https://github.com/azitowolf/">@azitowolf</a> in Boston.</p>
+  </div>
 
+  <div class="jumbotron text-center info">
+    <ul class="list-inline">
+      <li>Your Texts - </li>
+      <li>All Texts - </li>
+      <li>Sent Texts</li>
+    </ul>
+  </div>
 
 <!-- primary text container -->
 

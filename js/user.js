@@ -13,10 +13,12 @@ var userIIFE = (function(ptext) {
   _updateUserPage = function(user) {
     $('.cd-user-modal').removeClass('is-visible');
     $('#ptexts').empty();
+    $('.dropdown').show();
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + user.name);
-    $('#userProfileImage').attr('src', user.avatar);
-    $('#userProfileImage').show();
+    $('#stage').css('height', '200px');
+    $('#stage').css('background-image', 'url(' + user.avatar + ')');
+
   }; // Update page elements
 
   var login = function() {
@@ -75,7 +77,8 @@ var userIIFE = (function(ptext) {
 
   var logout = function() {
     $('#user-name').html('not logged in');
-    $('#userProfileImage').hide();
+    $('#stage').css('height', '0px');
+    $('.dropdown').hide();
     localStorage.clear();
     currentToken = "";
   }; // Logout
@@ -88,7 +91,10 @@ var userIIFE = (function(ptext) {
 
     $('#user-name').html('');
     $('#user-name').append('<span class="glyphicon glyphicon-user"></span>' + sessionName);
-    $('#userProfileImage').attr('src', sessionAvatar);
+    if(sessionAvatar){
+      $('#stage').css('background-image', 'url(' + sessionAvatar + ')');
+      $('#stage').css('height', '200px');
+    }
   }; // Retrieve session variables
 
   function readURL(input) {

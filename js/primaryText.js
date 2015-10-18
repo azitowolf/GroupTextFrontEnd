@@ -10,7 +10,7 @@ var ptextIIFE = (function(stext) {
       user +
       "<a href='#' id=deletePtext class= 'btn btn-danger'> Delete </a> </h2><p><div class='phone-containter'><div id='phone' class='phone'><div class='message left'><div class='message-text'></div></div><div class='message right'><div class='message-text'>!</div><div class='message-text'></div></div><div class='message left'><div class='message-text'></div></div></div><div class='send-container'><form id='send'><textarea rows='2' type='text' id='msgInput' class='send-input'>" +
       text +
-      "</textarea><input type='submit' class='send-btn' value='Send'></form></div></div></p><div class ='stexts hidden'></div></div></div>";
+      "</textarea><input type='submit' class='send-btn' value='Send'></form></div></div></p><div class ='stexts'></div></div></div>";
     return html;
   }; // Render Function
 

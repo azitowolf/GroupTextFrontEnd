@@ -49,10 +49,8 @@ a:hover{
 .header:hover{
   -webkit-transition:0.5s ease-in-out;
 }
-#user-name{
-
-  top:10px;
-  left:10px;
+.dropdown{
+margin-left: 10px;
 }
 .learnmore{
   -webkit-transition:1s ease-in-out;
@@ -60,6 +58,15 @@ a:hover{
 i {
   font-size: 1.5em;
   margin:5px;
+}
+
+/*HEADER*/
+
+#stage{
+
+  width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 
 /*PTEXTS*/
